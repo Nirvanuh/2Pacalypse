@@ -1,0 +1,25 @@
+from tkinter import *
+from PIL import ImageTk, Image
+
+root = Tk()
+canvas = Canvas(root, width=200, height=100)
+canvas.pack()
+image = Image.open('2Pac.jpg')
+image = image.resize((700, 550), Image.ANTIALIAS)
+image=ImageTk.PhotoImage(image)
+canvas.create_image(-120,-120, anchor=NW, image=image)
+root.configure(bg='black')
+root.geometry('800x500')
+root.resizable(0,0)
+root.title("2pacalypse")
+myLabel = Label(root, text='The 2pacalypse', font='arial 20 bold').pack()
+
+ip = StringVar()
+
+Label(root, text = 'Type the ip you want to hit:', font = 'arial 15 bold').place(x= 140, y = 260)
+ip_enter = Entry(root, width = 70,textvariable = ip).place(x = 50, y = 300)
+
+Button(root, text = 'HIT', font = 'arial 15 bold', bg = 'red', padx = 2, command = ip_enter).place(x = 120, y = 130)
+
+
+root.mainloop()
